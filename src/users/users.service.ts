@@ -18,11 +18,11 @@ export class UsersService {
         return await this.usersRepository.find();
     }
 
-    // async findOne(username: string): Promise<Users | undefined> {
-    //     return this.usersRepository.findOne({
-    //         where: {
-    //             username
-    //         }
-    //     });
-    // }
+    async findOne(username: string): Promise<User | undefined> {
+        return this.usersRepository.findOne({
+            where: {
+                username
+            }
+        });
+    }
 }
