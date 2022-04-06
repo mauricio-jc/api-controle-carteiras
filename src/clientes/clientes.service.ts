@@ -13,8 +13,17 @@ export class ClientesService {
         return await this.clientesRepository.find();
     }
 
+    findOne(id: string): Promise<Cliente> {
+        return this.clientesRepository.findOne(id);
+    }
+
     async create(cliente: Cliente): Promise<Cliente> {    
         const response = await this.clientesRepository.save(cliente);
         return response;
+    }
+
+    async update(id: string, cliente: Cliente): Promise<any> {    
+        await this.clientesRepository.update(id, cliente);
+        return await this.clientesRepository.findOne(id);
     }
 }
