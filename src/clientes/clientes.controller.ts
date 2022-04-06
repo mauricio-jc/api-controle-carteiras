@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { Cliente } from './cliente.entity';
 import { ClientesService } from './clientes.service';
@@ -57,6 +57,23 @@ export class ClientesController {
                 status: 'error',
                 message: 'Problemas ao atualizar cliente.',
                 data: response
+            };
+        }
+    }
+    
+    @UseGuards(JwtAuthGuard)
+    @Delete('/:id')
+    remove(@Param('id') id: string) {
+        if(this.clientesService.remove(id)) {
+            return {
+                status: 'success',
+                message: 'Cliente excluído com sucesso.'
+            };
+        }
+        else {
+            return {
+                status: 'error',
+                message: 'Problemas ao excluir cliente.',
             };
         }
     }

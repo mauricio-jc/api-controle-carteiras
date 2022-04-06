@@ -26,4 +26,15 @@ export class ClientesService {
         await this.clientesRepository.update(id, cliente);
         return await this.clientesRepository.findOne(id);
     }
+
+    async remove(id: string): Promise<boolean> {
+        const response = await this.clientesRepository.delete(id);
+
+        if(response) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
