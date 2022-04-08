@@ -17,10 +17,10 @@ export class CarteirasService {
     //     return this.clientesRepository.findOne(id);
     // }
 
-    // async create(cliente: Cliente): Promise<Cliente> {    
-    //     const response = await this.clientesRepository.save(cliente);
-    //     return response;
-    // }
+    async create(carteira: Carteira): Promise<Carteira> {    
+        const response = await this.carteirasRepository.save(carteira);
+        return response;
+    }
 
     // async update(id: string, cliente: Cliente): Promise<any> {    
     //     await this.clientesRepository.update(id, cliente);

@@ -19,26 +19,26 @@ export class CarteirasController {
     //     return this.clientesService.findOne(id);
     // }
 
-    // @UseGuards(JwtAuthGuard)
-    // @Post()
-    // async create(@Body() cliente: Cliente) {
-    //     const response = await this.clientesService.create(cliente);
+    @UseGuards(JwtAuthGuard)
+    @Post()
+    async create(@Body() carteira: Carteira) {
+        const response = await this.carteirasService.create(carteira);
         
-    //     if(HttpStatus.OK) {
-    //         return {
-    //             status: 'success',
-    //             message: 'Cliente cadastrado com sucesso.',
-    //             data: response
-    //         };
-    //     }
-    //     else {
-    //         return {
-    //             status: 'error',
-    //             message: 'Problemas ao cadastrar cliente.',
-    //             data: response
-    //         };
-    //     }
-    // }
+        if(HttpStatus.OK) {
+            return {
+                status: 'success',
+                message: 'Carteira cadastrado com sucesso.',
+                data: response
+            };
+        }
+        else {
+            return {
+                status: 'error',
+                message: 'Problemas ao cadastrar carteira.',
+                data: response
+            };
+        }
+    }
 
     // @UseGuards(JwtAuthGuard)
     // @Put('/:id')
