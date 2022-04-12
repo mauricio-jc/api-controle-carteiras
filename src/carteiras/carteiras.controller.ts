@@ -13,11 +13,11 @@ export class CarteirasController {
         return this.carteirasService.findAll();
     }
 
-    // @UseGuards(JwtAuthGuard)
-    // @Get('/:id')
-    // getCliente(@Param('id') id: string) {
-    //     return this.clientesService.findOne(id);
-    // }
+    @UseGuards(JwtAuthGuard)
+    @Get('/:id')
+    getCliente(@Param('id') id: string) {
+        return this.carteirasService.findOne(id);
+    }
 
     @UseGuards(JwtAuthGuard)
     @Post()

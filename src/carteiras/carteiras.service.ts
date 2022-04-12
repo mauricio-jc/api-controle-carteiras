@@ -13,9 +13,9 @@ export class CarteirasService {
         return await this.carteirasRepository.find();
     }
 
-    // findOne(id: string): Promise<Cliente> {
-    //     return this.clientesRepository.findOne(id);
-    // }
+    findOne(id: string): Promise<Carteira> {
+        return this.carteirasRepository.findOne(id);
+    }
 
     async create(carteira: Carteira): Promise<Carteira> {    
         const response = await this.carteirasRepository.save(carteira);
