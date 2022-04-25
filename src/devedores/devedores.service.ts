@@ -27,15 +27,15 @@ export class DevedoresService {
         return await this.devedoresRepository.findOne(id);
     }
 
-    // async remove(id: string): Promise<boolean> {
-    //     const response = await this.clientesRepository.delete(id);
+    async remove(id: string): Promise<boolean> {
+        const response = await this.devedoresRepository.delete(id);
 
-    //     if(response) {
-    //         return true;
-    //     }
-    //     else {
-    //         return false;
-    //     }
-    // }
+        if(response) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
 }

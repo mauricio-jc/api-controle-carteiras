@@ -61,21 +61,20 @@ export class DevedoresController {
         }
     }
     
-    // @UseGuards(JwtAuthGuard)
-    // @Delete('/:id')
-    // remove(@Param('id') id: string) {
-    //     if(this.clientesService.remove(id)) {
-    //         return {
-    //             status: 'success',
-    //             message: 'Cliente excluído com sucesso.'
-    //         };
-    //     }
-    //     else {
-    //         return {
-    //             status: 'error',
-    //             message: 'Problemas ao excluir cliente.',
-    //         };
-    //     }
-    // }
-
+    @UseGuards(JwtAuthGuard)
+    @Delete('/:id')
+    remove(@Param('id') id: string) {
+        if(this.devedoresService.remove(id)) {
+            return {
+                status: 'success',
+                message: 'Devedor excluído com sucesso.'
+            };
+        }
+        else {
+            return {
+                status: 'error',
+                message: 'Problemas ao excluir devedor.',
+            };
+        }
+    }
 }
