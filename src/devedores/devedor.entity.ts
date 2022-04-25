@@ -11,18 +11,18 @@ export class Devedor {
     @CreateDateColumn()
     updated_at: Timestamp;
 
-    @Column()
+    @Column({ type: 'varchar', length: 100 })
     nome: string;
 
-    @Column()
+    @Column({ type: 'varchar', length: 14 })
     cpf_cnpj: string;
 
-    @Column()
+    @Column({ type: 'varchar', length: 255 })
     endereco: string;
 
-    @Column()
+    @Column({ type: 'varchar', length: 20 })
     telefone: string;
 
-    @Column()
+    @Column({ type: 'varchar', length: 100 })
     email: string;
 }
