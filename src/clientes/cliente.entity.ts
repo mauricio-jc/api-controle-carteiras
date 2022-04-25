@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, Timestamp, CreateDateColumn, Double } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, Timestamp, CreateDateColumn, Double, OneToMany } from 'typeorm';
+import { ClienteDevedor } from 'src/clientes-devedores/cliente-devedor.entity';
 
 @Entity({ name: 'clientes' })
 export class Cliente {
@@ -37,4 +38,8 @@ export class Cliente {
     
     @Column({ type: 'decimal', precision: 10, scale: 2, default: 0.00 })
     percentual_comissao: Double;
+
+    @OneToMany(() => ClienteDevedor, (clienteDevedor) => clienteDevedor.cliente)
+    clienteDevedor: ClienteDevedor[];
+    
 }

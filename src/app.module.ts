@@ -9,6 +9,9 @@ import { User } from './users/user.entity';
 import { Cliente } from './clientes/cliente.entity';
 import { DevedoresModule } from './devedores/devedores.module';
 import { Devedor } from './devedores/devedor.entity';
+import { ClientesDevedoresModule } from './clientes-devedores/clientes-devedores.module';
+import { ClienteDevedor } from './clientes-devedores/cliente-devedor.entity';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 @Module({
     imports: [
@@ -22,14 +25,17 @@ import { Devedor } from './devedores/devedor.entity';
             entities: [
                 User,
                 Cliente,
-                Devedor
+                Devedor,
+                ClienteDevedor
             ],
             synchronize: true,
+            namingStrategy: new SnakeNamingStrategy()
         }),
         UsersModule,
         AuthModule,
         ClientesModule,
         DevedoresModule,
+        ClientesDevedoresModule,
     ],
     controllers: [AppController],
     providers: [AppService],

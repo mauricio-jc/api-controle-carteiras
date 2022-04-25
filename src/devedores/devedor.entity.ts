@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, Timestamp, CreateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, Timestamp, CreateDateColumn, OneToMany } from 'typeorm';
+import { ClienteDevedor } from 'src/clientes-devedores/cliente-devedor.entity';
 
 @Entity({ name: 'devedores' })
 export class Devedor {
@@ -25,4 +26,7 @@ export class Devedor {
 
     @Column({ type: 'varchar', length: 100 })
     email: string;
+
+    @OneToMany(() => ClienteDevedor, (clienteDevedor) => clienteDevedor.devedor)
+    clienteDevedor: ClienteDevedor[];
 }
