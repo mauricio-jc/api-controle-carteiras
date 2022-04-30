@@ -64,17 +64,6 @@ export class ClientesController {
     @UseGuards(JwtAuthGuard)
     @Delete('/:id')
     remove(@Param('id') id: string) {
-        if(this.clientesService.remove(id)) {
-            return {
-                status: 'success',
-                message: 'Cliente excluído com sucesso.'
-            };
-        }
-        else {
-            return {
-                status: 'error',
-                message: 'Problemas ao excluir cliente.',
-            };
-        }
+        return this.clientesService.remove(id);
     }
 }
