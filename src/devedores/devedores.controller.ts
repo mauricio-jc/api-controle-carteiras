@@ -64,17 +64,6 @@ export class DevedoresController {
     @UseGuards(JwtAuthGuard)
     @Delete('/:id')
     remove(@Param('id') id: string) {
-        if(this.devedoresService.remove(id)) {
-            return {
-                status: 'success',
-                message: 'Devedor excluído com sucesso.'
-            };
-        }
-        else {
-            return {
-                status: 'error',
-                message: 'Problemas ao excluir devedor.',
-            };
-        }
-    }
+        return this.devedoresService.remove(id);
+    }    
 }
