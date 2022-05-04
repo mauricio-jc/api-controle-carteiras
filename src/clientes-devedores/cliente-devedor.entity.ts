@@ -22,6 +22,9 @@ export class ClienteDevedor {
     @Column({ type: 'decimal', precision: 10, scale: 2, default: 0.00 })
     valor_atualizado: Double;
 
+    @Column({ type: 'varchar', length: 40, default: 'Em aberto' })
+    situacao: string;
+
     @ManyToOne(() => Cliente, (cliente) => cliente.clienteDevedor, {
         nullable: false,
         eager: true
